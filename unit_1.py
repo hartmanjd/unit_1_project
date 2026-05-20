@@ -1,5 +1,7 @@
 import json
 import hashlib
+import subprocess
+import os
 
 
 
@@ -135,7 +137,10 @@ def delete_task():
       
 
 def logout():
-    print("Logging out...")
+    print("Logged out successfully!")
+
+def clear_screen():
+    subprocess.run('cls' if os.name == 'nt' else 'clear', shell=True)
 
 while True:
     print()
@@ -160,7 +165,8 @@ while True:
         input("Press Enter to return to the main menu.")
         
     elif menu_choice == '5':
-        print("Logging out...")
+        clear_screen()
+        logout()
         break
     else:
         print("Invalid choice. Please enter a number between 1 and 5.")
