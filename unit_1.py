@@ -85,16 +85,30 @@ def add_task():
         json.dump(tasks, f, indent=2)
     print("Task added successfully!")
 
+def view_tasks():
+    try:
+        with open('tasks.json', 'r') as f:
+            tasks = json.load(f)
+    except FileNotFoundError:
+        print("No tasks found.")
+        return
+    for index, task in enumerate(tasks, start = 1):
+        status = 'Completed' if task['completed'] else 'Pending'
+        print(f"{index}. {task['task']} - {status}")
+
 
 while True:
+    print()
     main_menu()
     menu_choice = input('Enter your choice (1-5): ')
+    print()
     while True:
         if menu_choice == '1':
             add_task()
             break
         elif menu_choice == '2':
             view_tasks()
+            break
         elif menu_choice == '3':
             mark_task_completed()
         elif menu_choice == '4':
