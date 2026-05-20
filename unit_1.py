@@ -25,8 +25,6 @@ def login():
             print("Login successful!")
             return True
         
-            
-
     print("Invalid username or password.")
     return False
 
@@ -85,6 +83,7 @@ def add_task():
     with open('tasks.json', 'w') as f:
         json.dump(tasks, f, indent=2)
     print("Task added successfully!")
+    
 
 def view_tasks():
     try:
@@ -115,6 +114,7 @@ def mark_task_completed():
     with open('tasks.json', 'w') as f:
         json.dump(tasks, f, indent=2)
     print("Task marked as completed!")
+    
 
 def delete_task():
     try:
@@ -131,7 +131,8 @@ def delete_task():
     del tasks[task_number - 1]
     with open('tasks.json', 'w') as f:
         json.dump(tasks, f, indent=2)
-    print("Task deleted successfully!")    
+    print("Task deleted successfully!")
+      
 
 def logout():
     print("Logging out...")
@@ -141,22 +142,29 @@ while True:
     main_menu()
     menu_choice = input('Enter your choice (1-5): ')
     print()
-    while True:
-        if menu_choice == '1':
-            add_task()
-            break
-        elif menu_choice == '2':
-            view_tasks()
-            break
-        elif menu_choice == '3':
-            mark_task_completed()
-            break
-        elif menu_choice == '4':
-            delete_task()
-            break   
-        elif menu_choice == '5':
-            print("Logging out...")
-            break
+
+    if menu_choice == '1':
+        add_task()
+        input("Press Enter to return to the main menu.")
+
+    elif menu_choice == '2':
+        view_tasks()
+        input("Press Enter to return to the main menu.")
+        
+    elif menu_choice == '3':
+        mark_task_completed()
+        input("Press Enter to return to the main menu.")
+        
+    elif menu_choice == '4':
+        delete_task()
+        input("Press Enter to return to the main menu.")
+        
+    elif menu_choice == '5':
+        print("Logging out...")
+        break
+    else:
+        print("Invalid choice. Please enter a number between 1 and 5.")
+
 
 
 

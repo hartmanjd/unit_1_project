@@ -1,26 +1,14 @@
 [
   {
-    "task": "finish",
+    "task": "1",
     "completed": true
   },
   {
-    "task": "finish2",
+    "task": "task 2",
+    "completed": true
+  },
+  {
+    "task": "task 3",
     "completed": false
-  },
-  {
-    "task": "finish2",
-    "completed": false
-  },
-  {
-    "task": "finish3",
-    "completed": true
-  },
-  {
-    "task": "this is the new task to test",
-    "completed": true
-  },
-  {
-    "task": "this is number 6",
-    "completed": true
   }
 ]
