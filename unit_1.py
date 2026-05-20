@@ -57,6 +57,7 @@ while True:
             username, password = registration()
             if save_user_data(username, password):
                 print("User saved successfully!")
+                print()
                 break
         
            
@@ -131,6 +132,9 @@ def delete_task():
     with open('tasks.json', 'w') as f:
         json.dump(tasks, f, indent=2)
     print("Task deleted successfully!")    
+
+def logout():
+    print("Logging out...")
 
 while True:
     print()
