@@ -1,8 +1,7 @@
 import json
 import hashlib
-import subprocess
 import os
-
+import subprocess
 
 
 def registration():
@@ -108,7 +107,11 @@ def mark_task_completed():
         print("No tasks found.")
         return
     view_tasks()
-    task_number = int(input('Enter the number of the task you want to mark as completed: '))
+    try:
+        task_number = int(input('Enter the number of the task you want to mark as completed: '))
+    except ValueError:
+        print("Invalid input. Please enter a valid task number.")
+        return
     if task_number <1 or task_number > len(tasks):
         print("Invalid task number.")
         return
@@ -126,7 +129,11 @@ def delete_task():
         print("No tasks found.")
         return
     view_tasks()
-    task_number = int(input('Enter the number of the task you want to delete: '))
+    try:
+        task_number = int(input('Enter the number of the task you want to delete: '))
+    except ValueError:
+        print("Invalid input. Please enter a valid task number.")
+        return
     if task_number <1 or task_number > len(tasks):
         print("Invalid task number.")
         return
