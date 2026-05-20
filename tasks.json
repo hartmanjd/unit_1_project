@@ -1,7 +1,7 @@
 [
   {
     "task": "finish",
-    "completed": false
+    "completed": true
   },
   {
     "task": "finish2",
@@ -13,6 +13,14 @@
   },
   {
     "task": "finish3",
-    "completed": false
+    "completed": true
+  },
+  {
+    "task": "this is the new task to test",
+    "completed": true
+  },
+  {
+    "task": "this is number 6",
+    "completed": true
   }
 ]

@@ -95,7 +95,42 @@ def view_tasks():
     for index, task in enumerate(tasks, start = 1):
         status = 'Completed' if task['completed'] else 'Pending'
         print(f"{index}. {task['task']} - {status}")
+        
 
+
+def mark_task_completed():
+    try:
+        with open('tasks.json', 'r') as f:
+            tasks = json.load(f)
+    except FileNotFoundError:
+        print("No tasks found.")
+        return
+    view_tasks()
+    task_number = int(input('Enter the number of the task you want to mark as completed: '))
+    if task_number <1 or task_number > len(tasks):
+        print("Invalid task number.")
+        return
+    tasks[task_number - 1]['completed'] = True
+    with open('tasks.json', 'w') as f:
+        json.dump(tasks, f, indent=2)
+    print("Task marked as completed!")
+
+def delete_task():
+    try:
+        with open('tasks.json', 'r') as f:
+            tasks = json.load(f)
+    except FileNotFoundError:
+        print("No tasks found.")
+        return
+    view_tasks()
+    task_number = int(input('Enter the number of the task you want to delete: '))
+    if task_number <1 or task_number > len(tasks):
+        print("Invalid task number.")
+        return
+    del tasks[task_number - 1]
+    with open('tasks.json', 'w') as f:
+        json.dump(tasks, f, indent=2)
+    print("Task deleted successfully!")    
 
 while True:
     print()
@@ -111,8 +146,10 @@ while True:
             break
         elif menu_choice == '3':
             mark_task_completed()
+            break
         elif menu_choice == '4':
             delete_task()
+            break   
         elif menu_choice == '5':
             print("Logging out...")
             break
