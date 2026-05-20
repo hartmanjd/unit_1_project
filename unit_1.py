@@ -64,5 +64,45 @@ while True:
         if login():
             break
 
+def main_menu():
+    print('Please choose an option:')
+    print()
+    print('1. Add a Task')
+    print('2. View Tasks')
+    print('3. Mark a Task as Completed')
+    print('4. Delete a Task')
+    print('5. Logout')
+
+def add_task():
+    try:
+        task = input('Enter the task you want to add: ')
+        with open('tasks.json', 'r') as f:
+            tasks = json.load(f)
+    except FileNotFoundError:
+        tasks = []
+    tasks.append({'task': task, 'completed': False})
+    with open('tasks.json', 'w') as f:
+        json.dump(tasks, f, indent=2)
+    print("Task added successfully!")
+
+
+while True:
+    main_menu()
+    menu_choice = input('Enter your choice (1-5): ')
+    while True:
+        if menu_choice == '1':
+            add_task()
+            break
+        elif menu_choice == '2':
+            view_tasks()
+        elif menu_choice == '3':
+            mark_task_completed()
+        elif menu_choice == '4':
+            delete_task()
+        elif menu_choice == '5':
+            print("Logging out...")
+            break
+
+
 
 
