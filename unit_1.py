@@ -93,6 +93,9 @@ def view_tasks():
     except FileNotFoundError:
         print("No tasks found.")
         return
+    if not tasks:
+        print("No tasks found.")
+        return
     for index, task in enumerate(tasks, start = 1):
         status = 'Completed' if task['completed'] else 'Pending'
         print(f"{index}. {task['task']} - {status}")
